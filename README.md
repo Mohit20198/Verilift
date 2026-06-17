@@ -1,4 +1,4 @@
-# VeriLift 🔬
+# VeriLift 
 
 **Pay for verified lift, not self-reported ROAS.**
 
