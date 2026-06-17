@@ -159,16 +159,23 @@ function App() {
       
       {/* Persistent Top Navbar (Glassmorphic) */}
       <nav className="fixed top-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl border-b border-white/5 shadow-sm">
-        <div className="flex items-center justify-between px-6 md:px-12 py-4 max-w-7xl mx-auto">
-          <div 
-            className="flex items-center gap-2 cursor-pointer group"
-            onClick={() => setActiveTab('home')}
-          >
-            <ShieldCheck size={28} className="text-indigo-400 group-hover:text-indigo-300 transition-colors drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
-            <span className="text-2xl font-bold tracking-tight text-white font-display drop-shadow-md">VeriLift</span>
+        <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-12 py-3 md:py-4 gap-3 md:gap-0 max-w-7xl mx-auto">
+          <div className="flex w-full md:w-auto items-center justify-between md:justify-start">
+            <div 
+              className="flex items-center gap-2 cursor-pointer group"
+              onClick={() => setActiveTab('home')}
+            >
+              <ShieldCheck size={28} className="text-indigo-400 group-hover:text-indigo-300 transition-colors drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
+              <span className="text-2xl font-bold tracking-tight text-white font-display drop-shadow-md">VeriLift</span>
+            </div>
+            <button 
+              onClick={() => setActiveTab('verification')}
+              className="md:hidden bg-indigo-600/80 backdrop-blur-md hover:bg-indigo-500 border border-indigo-400/30 text-white px-4 py-1.5 text-xs sm:text-sm rounded-full font-bold shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+              Launch App
+            </button>
           </div>
           
-          <div className="hidden md:flex items-center gap-1 bg-slate-900/40 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-inner">
+          <div className="flex w-full md:w-auto items-center gap-1 bg-slate-900/40 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-inner overflow-x-auto hide-scrollbar">
             <NavTab label="Home" id="home" active={activeTab} setActiveTab={setActiveTab} />
             <NavTab label="Verification" id="verification" active={activeTab} setActiveTab={setActiveTab} />
             <NavTab label="Settlement" id="settlement" active={activeTab} setActiveTab={setActiveTab} />
@@ -178,18 +185,18 @@ function App() {
 
           <button 
             onClick={() => setActiveTab('verification')}
-            className="bg-indigo-600/80 backdrop-blur-md hover:bg-indigo-500 border border-indigo-400/30 text-white px-6 py-2 text-sm rounded-full font-bold active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+            className="hidden md:block bg-indigo-600/80 backdrop-blur-md hover:bg-indigo-500 border border-indigo-400/30 text-white px-6 py-2 text-sm rounded-full font-bold active:scale-95 transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
             Launch App
           </button>
         </div>
       </nav>
 
       {/* Main Content (Z-10 keeps it above the canvas) */}
-      <main className="pt-24 pb-12 relative z-10">
+      <main className="pt-28 md:pt-24 pb-12 relative z-10">
         {activeTab === 'home' ? (
           <HomeView setActiveTab={setActiveTab} />
         ) : (
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
             {loading ? (
               <div className="flex h-[60vh] items-center justify-center flex-col gap-4">
                 <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-500"></div>
@@ -233,7 +240,7 @@ function NavTab({ label, id, active, setActiveTab }) {
   return (
     <button
       onClick={() => setActiveTab(id)}
-      className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 font-display tracking-wide ${
+      className={`px-4 md:px-5 py-2.5 whitespace-nowrap rounded-full text-xs md:text-sm font-medium transition-all duration-300 font-display tracking-wide ${
         isActive 
           ? 'bg-indigo-500/20 text-indigo-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] border border-indigo-500/30' 
           : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
@@ -251,33 +258,33 @@ function HomeView({ setActiveTab }) {
   return (
     <div className="animate-in fade-in duration-700 w-full">
       {/* Hero Section (Removed local canvas, using global BackgroundShader) */}
-      <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-4 -mt-24 pt-32 pb-24">
-        <div className="relative z-10 max-w-4xl mx-auto px-4 mt-12">
-          <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 backdrop-blur-md px-5 py-2 rounded-full mb-8 shadow-xl">
-            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_8px_rgba(99,102,241,1)]"></span>
-            <span className="text-indigo-200 text-xs font-bold tracking-widest uppercase font-sans">Verified Accuracy</span>
+      <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-4 -mt-20 md:-mt-24 pt-32 md:pt-40 pb-16 md:pb-24">
+        <div className="relative z-10 max-w-4xl mx-auto px-2 md:px-4 mt-8 md:mt-12">
+          <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 backdrop-blur-md px-4 md:px-5 py-1.5 md:py-2 rounded-full mb-6 md:mb-8 shadow-xl">
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_8px_rgba(99,102,241,1)]"></span>
+            <span className="text-indigo-200 text-[10px] md:text-xs font-bold tracking-widest uppercase font-sans">Verified Accuracy</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight font-display drop-shadow-2xl">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-white mb-4 md:mb-6 leading-tight tracking-tight font-display drop-shadow-2xl">
             Truth in Lift. <br/><span className="bg-gradient-to-r from-indigo-300 to-sky-300 bg-clip-text text-transparent drop-shadow-lg">Precision in Performance.</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
+          <p className="text-base sm:text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium px-2">
             Stop paying for self-reported ROAS. VeriLift provides independent, rigorous verification of incremental lift using exposed vs holdout groups.
           </p>
           <div className="flex flex-col gap-4 items-center">
             <button 
               onClick={() => setActiveTab('verification')}
-              className="bg-indigo-600/90 backdrop-blur-xl border border-indigo-400/40 hover:bg-indigo-500 text-white px-10 py-4 text-lg font-bold rounded-full shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 transition-transform active:scale-95 font-display tracking-wide">
+              className="bg-indigo-600/90 backdrop-blur-xl border border-indigo-400/40 hover:bg-indigo-500 text-white px-8 md:px-10 py-3 md:py-4 text-base md:text-lg font-bold rounded-full shadow-[0_0_30px_rgba(99,102,241,0.5)] hover:scale-105 transition-transform active:scale-95 font-display tracking-wide">
               Enter Platform
             </button>
-            <span className="text-sm text-slate-400 font-mono mt-2 drop-shadow-sm bg-slate-900/50 px-3 py-1 rounded-full border border-white/5">Independent Protocol v2.4.0</span>
+            <span className="text-xs md:text-sm text-slate-400 font-mono mt-2 drop-shadow-sm bg-slate-900/50 px-3 py-1 rounded-full border border-white/5">Independent Protocol v2.4.0</span>
           </div>
         </div>
       </section>
 
       {/* Overview Cards */}
-      <section className="py-12 px-6 max-w-7xl mx-auto z-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 -mt-16">
-          <div className="glass-panel p-10 border-t-red-500/30 hover:border-red-500/40 hover:shadow-[0_10px_40px_rgba(239,68,68,0.15)]">
+      <section className="py-12 px-4 md:px-6 max-w-7xl mx-auto z-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 -mt-12 md:-mt-16">
+          <div className="glass-panel p-6 md:p-10 border-t-red-500/30 hover:border-red-500/40 hover:shadow-[0_10px_40px_rgba(239,68,68,0.15)]">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 bg-red-500/20 backdrop-blur-md border border-red-500/20 rounded-xl shadow-[0_0_15px_rgba(239,68,68,0.2)]"><AlertTriangle className="text-red-300" size={28} /></div>
               <h2 className="text-3xl font-bold text-white font-display drop-shadow-sm">The Problem</h2>
@@ -297,7 +304,7 @@ function HomeView({ setActiveTab }) {
             </ul>
           </div>
 
-          <div className="glass-panel p-10 border-t-emerald-500/30 hover:border-emerald-500/40 hover:shadow-[0_10px_40px_rgba(16,185,129,0.15)]">
+          <div className="glass-panel p-6 md:p-10 border-t-emerald-500/30 hover:border-emerald-500/40 hover:shadow-[0_10px_40px_rgba(16,185,129,0.15)]">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 bg-emerald-500/20 backdrop-blur-md border border-emerald-500/20 rounded-xl shadow-[0_0_15px_rgba(16,185,129,0.2)]"><CheckCircle2 className="text-emerald-300" size={28} /></div>
               <h2 className="text-3xl font-bold text-white font-display drop-shadow-sm">The Solution (Theme 02)</h2>
@@ -365,10 +372,10 @@ function MetricCard({ title, value, subvalue, type = 'default' }) {
   };
   
   return (
-    <div className={`glass-panel p-6 ${colors[type]} hover:shadow-2xl hover:scale-[1.02] transition-all duration-300`}>
-      <h3 className="text-sm font-semibold text-slate-300 mb-2 tracking-wide uppercase drop-shadow-sm">{title}</h3>
-      <div className="text-4xl font-extrabold font-display tracking-tight drop-shadow-md">{value}</div>
-      {subvalue && <div className="text-sm mt-3 font-medium opacity-90">{subvalue}</div>}
+    <div className={`glass-panel p-4 md:p-6 ${colors[type]} hover:shadow-2xl hover:scale-[1.02] transition-all duration-300`}>
+      <h3 className="text-xs md:text-sm font-semibold text-slate-300 mb-1 md:mb-2 tracking-wide uppercase drop-shadow-sm">{title}</h3>
+      <div className="text-2xl md:text-4xl font-extrabold font-display tracking-tight drop-shadow-md break-all">{value}</div>
+      {subvalue && <div className="text-xs md:text-sm mt-2 md:mt-3 font-medium opacity-90">{subvalue}</div>}
     </div>
   );
 }
@@ -403,9 +410,9 @@ function VerificationPage({ campaigns }) {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <header className="glass-panel p-8 border-t-indigo-500/30 bg-indigo-500/5">
-        <h1 className="text-4xl font-extrabold text-white mb-3 font-display drop-shadow-md">Campaign Verification</h1>
-        <p className="text-lg text-slate-300 font-medium">Compare claimed performance with independently verified lift.</p>
+      <header className="glass-panel p-5 md:p-8 border-t-indigo-500/30 bg-indigo-500/5">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2 font-display drop-shadow-md">Campaign Verification</h1>
+        <p className="text-sm md:text-lg text-slate-300 font-medium">Compare claimed performance with independently verified lift.</p>
       </header>
       
       <div className="glass-panel p-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -420,7 +427,7 @@ function VerificationPage({ campaigns }) {
             </option>
           ))}
         </select>
-        <div className="text-sm font-bold px-6 py-2.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+        <div className="text-xs md:text-sm font-bold px-4 md:px-6 py-2 md:py-2.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 shadow-[0_0_10px_rgba(99,102,241,0.2)] text-center md:text-left break-words w-full md:w-auto">
           Network: {c.network_name}
         </div>
       </div>
@@ -637,14 +644,14 @@ function SettlementPage({ settlement }) {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <header className="glass-panel p-8 border-t-indigo-500/30 bg-indigo-500/5 flex justify-between items-start">
+      <header className="glass-panel p-5 md:p-8 border-t-indigo-500/30 bg-indigo-500/5 flex flex-col sm:flex-row gap-3 sm:items-start justify-between">
         <div>
-          <h1 className="text-4xl font-extrabold text-white mb-3 font-display drop-shadow-md">Settlement Engine</h1>
-          <p className="text-lg text-slate-300 font-medium">Performance-linked payout adjusted based on verified lift.</p>
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2 font-display drop-shadow-md">Settlement Engine</h1>
+          <p className="text-sm md:text-lg text-slate-300 font-medium">Performance-linked payout adjusted based on verified lift.</p>
         </div>
-        <button onClick={downloadReceipt} className="flex items-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl border border-slate-600 transition-colors shadow-lg group">
-          <Download size={20} className="text-indigo-400 group-hover:scale-110 transition-transform" />
-          <span className="font-bold text-sm tracking-wide">Download Receipt (PDF)</span>
+        <button onClick={downloadReceipt} className="flex items-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white px-4 py-2 rounded-xl border border-slate-600 transition-colors shadow-lg group self-start whitespace-nowrap">
+          <Download size={16} className="text-indigo-400 group-hover:scale-110 transition-transform" />
+          <span className="font-bold text-xs md:text-sm tracking-wide">Download Receipt</span>
         </button>
       </header>
       
@@ -707,9 +714,9 @@ function ReliabilityPage({ reliability }) {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <header className="glass-panel p-8 border-t-indigo-500/30 bg-indigo-500/5">
-        <h1 className="text-4xl font-extrabold text-white mb-3 font-display drop-shadow-md">Network Reliability Leaderboard</h1>
-        <p className="text-lg text-slate-300 font-medium">Rank retail media networks by long-term trustworthiness.</p>
+      <header className="glass-panel p-5 md:p-8 border-t-indigo-500/30 bg-indigo-500/5">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2 font-display drop-shadow-md">Network Reliability Leaderboard</h1>
+        <p className="text-sm md:text-lg text-slate-300 font-medium">Rank retail media networks by long-term trustworthiness.</p>
       </header>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -781,9 +788,9 @@ function InsightsPage({ campaigns }) {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <header className="glass-panel p-8 border-t-indigo-500/30 bg-indigo-500/5">
-        <h1 className="text-4xl font-extrabold text-white mb-3 font-display drop-shadow-md">AI Insights</h1>
-        <p className="text-lg text-slate-300 font-medium">Executive summary powered by AI verification.</p>
+      <header className="glass-panel p-5 md:p-8 border-t-indigo-500/30 bg-indigo-500/5">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-2 font-display drop-shadow-md">AI Insights</h1>
+        <p className="text-sm md:text-lg text-slate-300 font-medium">Executive summary powered by AI verification.</p>
       </header>
 
       <div className="glass-panel p-6">
@@ -855,15 +862,15 @@ function AILoadingSequence() {
   }, [steps.length]);
 
   return (
-    <div className="glass-panel p-24 flex flex-col items-center justify-center border-t-indigo-500/30 shadow-[0_0_30px_rgba(99,102,241,0.15)] h-96">
-      <Cpu size={64} className="text-indigo-400 mb-8 animate-pulse shadow-indigo-500/50 drop-shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
-      <div className="w-full max-w-lg bg-slate-900 rounded-full h-2 mb-8 overflow-hidden border border-slate-700 shadow-inner">
+    <div className="glass-panel p-8 md:p-24 flex flex-col items-center justify-center border-t-indigo-500/30 shadow-[0_0_30px_rgba(99,102,241,0.15)] h-72 md:h-96">
+      <Cpu size={48} className="text-indigo-400 mb-6 animate-pulse drop-shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
+      <div className="w-full max-w-lg bg-slate-900 rounded-full h-2 mb-6 overflow-hidden border border-slate-700 shadow-inner">
         <div 
           className="bg-indigo-500 h-2 rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(99,102,241,0.8)]" 
           style={{ width: `${(stepIdx + 1) * 20}%` }}
         ></div>
       </div>
-      <p className="text-indigo-300 font-mono text-lg drop-shadow-md tracking-wider h-8">
+      <p className="text-indigo-300 font-mono text-xs md:text-base drop-shadow-md tracking-wider text-center px-4">
         {steps[stepIdx]}
       </p>
     </div>
