@@ -8,3 +8,8 @@ __pycache__/
 venv/
 .venv/
 .gemini/
+docs/
+AGENTS.md
+README_TEMPLATE.md
+stitch.html
+stitch_generated.html
