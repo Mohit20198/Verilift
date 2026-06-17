@@ -1,0 +1,13 @@
+campaign_id,campaign_name,network_name,campaign_invoice,claimed_lift,claimed_revenue,base_payment_pct,performance_pool_pct,start_date,end_date
+CMP_A001,Summer Beauty Sale,RetailNet A,500000,0.2,1500000.0,0.5,0.5,2025-06-01,2025-06-30
+CMP_A002,Monsoon Skincare Push,RetailNet A,600000,0.2,1800000.0,0.5,0.5,2025-07-01,2025-07-31
+CMP_A003,Festive Beauty Boost,RetailNet A,750000,0.19,2231250.0,0.5,0.5,2025-10-01,2025-10-31
+CMP_A004,Year-End Loyalty Drive,RetailNet A,550000,0.21,1663750.0,0.5,0.5,2025-12-01,2025-12-31
+CMP_B001,Spring New Customer Drive,RetailNet B,480000,0.14,1368000.0,0.6,0.4,2025-03-01,2025-03-31
+CMP_B002,Wellness Category Push,RetailNet B,520000,0.135,1475500.0,0.6,0.4,2025-05-01,2025-05-31
+CMP_B003,Back to School Essentials,RetailNet B,700000,0.145,2003750.0,0.6,0.4,2025-08-01,2025-08-31
+CMP_B004,Diwali Trust Campaign,RetailNet B,900000,0.138,2560500.0,0.6,0.4,2025-10-15,2025-11-14
+CMP_C001,Flash Sale Amplifier,RetailNet C,450000,0.24,1395000.0,0.5,0.5,2025-04-01,2025-04-30
+CMP_C002,Premium Brand Showcase,RetailNet C,800000,0.25,2500000.0,0.5,0.5,2025-06-15,2025-07-14
+CMP_C003,Loyalty Retargeting Blitz,RetailNet C,650000,0.23,1998750.0,0.5,0.5,2025-09-01,2025-09-30
+CMP_C004,Holiday Mega Push,RetailNet C,1000000,0.26,3150000.0,0.5,0.5,2025-11-15,2025-12-15
