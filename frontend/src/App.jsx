@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { Download, SlidersHorizontal, Cpu } from 'lucide-react';
 
-const API_URL = "https://verilift.onrender.com"; 
+const API_URL = "https://verilift-1.onrender.com/api"; 
 
 // -----------------------------------------------------------------------------
 // Global Shader Background
